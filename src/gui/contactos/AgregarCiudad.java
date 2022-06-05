@@ -1,10 +1,11 @@
 
 package gui.contactos;
 
-import agendita.OperacionesBaseDatos;
+
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import utilerias.Colores;
+import utilerias.OperacionesBaseDatos;
 
 
 public class AgregarCiudad extends javax.swing.JDialog {

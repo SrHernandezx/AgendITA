@@ -22,7 +22,7 @@ public class Genero {
     this.id = id;
     }
    
-    public void setNombre(String genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     } 
 }

@@ -4,8 +4,6 @@
  */
 package gui.contactos;
 
-import agendita.GestionContactos;
-import agendita.OperacionesBaseDatos;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -15,7 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
@@ -28,6 +26,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import utilerias.Colores;
+import utilerias.LongitudesAtributosBD;
+import utilerias.OperacionesBaseDatos;
 
 public class AgregarContacto extends javax.swing.JFrame {
 
@@ -80,7 +81,6 @@ public class AgregarContacto extends javax.swing.JFrame {
         jLabelImagen = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jDateChooserFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListCorreosElectronicos = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -89,6 +89,7 @@ public class AgregarContacto extends javax.swing.JFrame {
         jButtonAgregarFoto = new javax.swing.JButton();
         jButtonTelefono = new javax.swing.JButton();
         jButtonCorreoElectronico = new javax.swing.JButton();
+        jDateChooserFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
 
@@ -360,15 +361,15 @@ public class AgregarContacto extends javax.swing.JFrame {
                                 .addGap(127, 127, 127)
                                 .addComponent(jButtonAgregarFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBoxGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooserFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButtonTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooserFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(67, 67, 67)
                 .addComponent(jLabelImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41)
@@ -389,9 +390,9 @@ public class AgregarContacto extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jDateChooserFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(jDateChooserFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
                         .addComponent(jComboBoxGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -566,7 +567,7 @@ public class AgregarContacto extends javax.swing.JFrame {
         }
         
         public void cargarEstados(){
-            Object [][] datos = OperacionesBaseDatos,buscarEstados();
+            Object [][] datos = OperacionesBaseDatos.buscarEstados();
             this.estados = new Estado[datos.length];
             for (int i = 0; i < estados.length; i++) {
                 estados[i] = new Estados();
@@ -616,7 +617,8 @@ public class AgregarContacto extends javax.swing.JFrame {
             jTextFieldNumero.setText("");
             jTextFieldColonia.setText("");
             jComboBoxMunicipio.setSelectedIndex(0);
-            jComboBoxGenero.setDate(null);
+            jComboBoxGenero.setSelectedIndex(0);
+            jDateChooserFechaNacimiento.setDate(null);
             jLabelImagen.setIcon(null);
             modeloListaTelefonos.clear();
             modeloListaCorreosElectronicos.clear();
@@ -702,7 +704,7 @@ public class AgregarContacto extends javax.swing.JFrame {
             if (modeloListaCorreosElectronicos.size() > 0) {
                 for (int i = 0; i < modeloListaCorreosElectronicos.size(); i++) {
                     String correo = String.valueOf(modeloListaTelefonos);
-                    resultado3 = OperacionesBaseDatos.insertarCorreoElectronicos(idContacto, correo);
+                    resultado3 = OperacionesBaseDatos.insertarCorreoElectronico(idContacto, correo);
                     
                 }
             }

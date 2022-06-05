@@ -712,7 +712,7 @@ public class OperacionesBaseDatos {
     } 
     
     
-    public static Object[][] buscarGeneros(String genero){
+    public static Object[][] buscarGenero(String genero){
         
         Object[][] datos = null;
 

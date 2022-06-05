@@ -5,6 +5,7 @@
 package gui.contactos;
 
 import javax.swing.JOptionPane;
+import utilerias.LongitudesAtributosBD;
 
 
 public class AgregarCorreoContacto extends javax.swing.JDialog {
