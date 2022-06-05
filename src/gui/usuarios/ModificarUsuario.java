@@ -1,13 +1,12 @@
 package gui.usuarios;
 
-import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import utilerias.Colores;
 import utilerias.LongitudesAtributosBD;
 import utilerias.OperacionesBaseDatos;
 
 
-public class ModificarUsuario extends javax.swing.JFrame {
+public class ModificarUsuario extends javax.swing.JDialog {
     
     private static ModificarUsuario instancia = null;
     public static Object[] datosUsuario;
