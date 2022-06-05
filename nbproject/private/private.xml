@@ -7,15 +7,22 @@
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/usuarios/ModificarUsuario.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/contactos/AgregarContacto.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/contactos/AgregarCiudad.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/GestionCeldas.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/ModeloTablaUsuarios.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/LongitudesAtributosBD.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/contactos/AgreTelContacto.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/usuarios/GestionDeUsuarios.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/contactos/GestionDeContactos.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/GestionEncabezadoTablaUsuarios.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/usuarios/AgregarUsuario.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/ModeloTablaContactos.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/agendita/AgendITA.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/Colores.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/inicio/Splash.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/inicio/Login.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/principal/MenuPrincipal.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/gui/contactos/AgregarGenero.java</file>
+            <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/GestionEncabezadoTablaContactos.java</file>
             <file>file:/C:/Users/Jorge/Documents/NetBeansProjects/AgendITA/src/utilerias/OperacionesBaseDatos.java</file>
         </group>
     </open-files>
