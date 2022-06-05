@@ -5,20 +5,25 @@ import agendita.OperacionesBaseDatos;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-public class AgregarGenero extends javax.swing.JDialog {
+public class AgregarEstado extends javax.swing.JDialog {
 
-    private static AgregarGenero instancia = null;
-    public AgregarGenero(java.awt.Frame parent, boolean modal) {
+    private static AgregarEstado instancia = null;
+    
+    public AgregarEstado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        OperacionesBaseDatos.levantarServidorXampp();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        jTextFieldEstado.setToolTipText("El nombre del estado debe tener a lo mucho"
+        + LongitudesAtributosBD.LONGITUD_NOMBRE_ESTADO + "caracteres" );
+        
     }
 
-    public static AgregarGenero getInstancia(java.awt.Frame parent, boolean  modal){
-        synchronized (AgregarGenero.class) {
+    public static AgregarEstado getInstancia (java.awt.Frame parent, boolean modal){
+        synchronized (AgregarEstado.class) {
             if (instancia == null) {
-                instancia = new AgregarGenero(parent, modal);
+                instancia = new AgregarEstado(parent, modal);
             }
         }
         return instancia;
@@ -29,28 +34,30 @@ public class AgregarGenero extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextFieldGenero = new javax.swing.JTextField();
+        jTextFieldEstado = new javax.swing.JTextField();
         jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Género");
+        jLabel1.setText("Estado");
 
-        jTextFieldGenero.setBackground(new java.awt.Color(255, 255, 204));
-        jTextFieldGenero.addFocusListener(new java.awt.event.FocusAdapter() {
+        jTextFieldEstado.setBackground(new java.awt.Color(255, 255, 204));
+        jTextFieldEstado.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jTextFieldGeneroFocusGained(evt);
+                jTextFieldEstadoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldGeneroFocusLost(evt);
+                jTextFieldEstadoFocusLost(evt);
             }
         });
-        jTextFieldGenero.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextFieldEstado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldGeneroKeyTyped(evt);
+                jTextFieldEstadoKeyTyped(evt);
             }
         });
 
@@ -75,102 +82,102 @@ public class AgregarGenero extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
                         .addGap(41, 41, 41)
-                        .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                        .addGap(52, 52, 52))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
+                        .addGap(34, 34, 34)
                         .addComponent(jButtonAceptar)
-                        .addGap(44, 44, 44)
-                        .addComponent(jButtonCancelar)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addComponent(jButtonCancelar)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(145, 145, 145))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(jTextFieldGenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addComponent(jTextFieldEstado)))
+                .addGap(68, 68, 68)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAceptar)
                     .addComponent(jButtonCancelar))
-                .addGap(122, 122, 122))
+                .addGap(77, 77, 77))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldGeneroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldGeneroFocusGained
-        jTextFieldGenero.setBackground(Colores.COLOR_FOCO);
-        jTextFieldGenero.selectAll();
-    }//GEN-LAST:event_jTextFieldGeneroFocusGained
+    private void jTextFieldEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEstadoFocusGained
+        jTextFieldEstado.setBackground(Colores.COLOR_FOCO);
+        jTextFieldEstado.selectAll();
+    }//GEN-LAST:event_jTextFieldEstadoFocusGained
 
-    private void jTextFieldGeneroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldGeneroFocusLost
-        jTextFieldGenero.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jTextFieldGeneroFocusLost
+    private void jTextFieldEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldEstadoFocusLost
+       jTextFieldEstado.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jTextFieldEstadoFocusLost
 
-    private void jTextFieldGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldGeneroKeyTyped
+    private void jTextFieldEstadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEstadoKeyTyped
         char c = evt.getKeyChar();
-        String texto = jTextFieldGenero.getText();
+        String texto = jTextFieldEstado.getText();
         if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NOMBRE_ESTADO){
         evt.consume();
         } 
-    }//GEN-LAST:event_jTextFieldGeneroKeyTyped
+    }//GEN-LAST:event_jTextFieldEstadoKeyTyped
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        jTextFieldGenero.setText("");
         this.dispose();
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        //verifica que el genero no este registrado en la bd
-        String genero = jTextFieldGenero.getText();
-        if (genero.equals("")) {
-            JOptionPane.showMessageDialog(null, "El campo genero no debe estar vacio",
-                    "AgendITA:: Agregar genero", JOptionPane.ERROR_MESSAGE);
-                    jTextFieldGenero.requestFocus();
+        //verifica que el estado no este registrado en la bd
+        String estado = jTextFieldEstado.getText();
+        if (estado.equals("")) {
+            JOptionPane.showMessageDialog(null, "El campo estado no debe estar vacio",
+                    "AgendITA:: Agregar estado", JOptionPane.ERROR_MESSAGE);
+                    jTextFieldEstado.setText("");
+                    jTextFieldEstado.requestFocus();
         }else{
-            if (OperacionesBaseDatos.isGeneroRegistrado(genero)) {
-                JOptionPane.showMessageDialog(null, "El genero "+ genero + " ya registrado en la Base de datos",
-                        "AgendITA: Agregar genero", JOptionPane.ERROR_MESSAGE);
-                jTextFieldGenero.setText("");
-                jTextFieldGenero.requestFocus();
+            if (OperacionesBaseDatos.isEstadoRegistrado(estado)) {
+                JOptionPane.showMessageDialog(null, "Estado ya registrado en la Base de datos",
+                        "AgendITA: Agregar estado", JOptionPane.ERROR_MESSAGE);
+                jTextFieldEstado.requestFocus();
             }else{
-                int respuesta = OperacionesBaseDatos.insertarGenero(genero);
+                int respuesta = OperacionesBaseDatos.insertarEstado(estado);
                 if (respuesta == 1) {
                     JOptionPane.showMessageDialog(null, "Registro insertado exitosamente", 
-                            "AgendITA: Agregar genero", JOptionPane.INFORMATION_MESSAGE);
-                    jTextFieldGenero.setText("");
-                    AgregarContacto agregarContacto = AgregarContacto.getInstancia();
-            agregarContacto.recargarGeneros(genero);
+                            "AgendITA: Agregar estado", JOptionPane.INFORMATION_MESSAGE);
+                    jTextFieldEstado.setText("");
                     this.dispose();
                 }
 
             }
-            
+            AgregarCiudad agregarCiudad = AgregarCiudad.getInstancia(null, true);
+            agregarCiudad.recargarEstados(estado);
         }
-    }//GEN-LAST:event_jButtonAceptarActionPerformed
-    
-    
         
+        
+    }//GEN-LAST:event_jButtonAceptarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -188,13 +195,13 @@ public class AgregarGenero extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarGenero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarGenero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarGenero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarGenero.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarEstado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -202,24 +209,24 @@ public class AgregarGenero extends javax.swing.JDialog {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                 AgregarGenero dialog = new AgregarGenero(new javax.swing.JFrame(), true);
+             AgregarEstado dialog = new AgregarEstado(new javax.swing.JFrame(), true);
              dialog.addWindowListener(new java.awt.event.WindowAdapter(){
             @Override
             public void windowClosing(java.awt.event.WindowEvent e){
             System.exit(0);
             }
             }
+            
         );
              dialog.setVisible(true);
-            }
-        });
-    }
+    }   });
+                }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextFieldGenero;
+    private javax.swing.JTextField jTextFieldEstado;
     // End of variables declaration//GEN-END:variables
 }
