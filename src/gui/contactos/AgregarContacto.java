@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package gui.contactos;
 
 import java.awt.Color;
@@ -29,6 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import utilerias.Colores;
 import utilerias.LongitudesAtributosBD;
 import utilerias.OperacionesBaseDatos;
+
 
 public class AgregarContacto extends javax.swing.JFrame {
 
@@ -570,7 +567,7 @@ public class AgregarContacto extends javax.swing.JFrame {
             Object [][] datos = OperacionesBaseDatos.buscarEstados();
             this.estados = new Estado[datos.length];
             for (int i = 0; i < estados.length; i++) {
-                estados[i] = new Estados();
+                estados[i] = new Estado();
                 estados[i].setId(Integer.parseInt(String.valueOf(datos[i][0])));
                 estados[i].setNombre(String.valueOf(datos[i][1]));
             }
@@ -802,15 +799,18 @@ public class AgregarContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCalleKeyTyped
 
     private void jTextFieldNumeroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNumeroFocusGained
+
         jTextFieldNumero.setBackground(Colores.COLOR_FOCO);
         jTextFieldNumero.selectAll();
     }//GEN-LAST:event_jTextFieldNumeroFocusGained
 
     private void jTextFieldNumeroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNumeroFocusLost
+      
         jTextFieldNumero.setBackground(Color.WHITE);
     }//GEN-LAST:event_jTextFieldNumeroFocusLost
 
     private void jTextFieldNumeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNumeroKeyTyped
+
         char c = evt.getKeyChar();
         String texto = jTextFieldNumero.getText();
         if((texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NUMERO_CONTACTO) 
@@ -825,10 +825,12 @@ public class AgregarContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldColoniaFocusGained
 
     private void jTextFieldColoniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldColoniaFocusLost
+ 
         jTextFieldColonia.setBackground(Color.WHITE);
     }//GEN-LAST:event_jTextFieldColoniaFocusLost
 
     private void jTextFieldColoniaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldColoniaKeyTyped
+        
         char c = evt.getKeyChar();
         String texto = jTextFieldColonia.getText();
         if((texto.length() + 1 > LongitudesAtributosBD.LONGITUD_COLONIA_CONTACTO) 
@@ -838,15 +840,18 @@ public class AgregarContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldColoniaKeyTyped
 
     private void jButtonAgregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarCiudadActionPerformed
-         AgregarCiudad agregarCiudad = AgregarCiudad.getInstancia(this, true);
+        
+        AgregarCiudad agregarCiudad = AgregarCiudad.getInstancia(this, true);
         agregarCiudad.setVisible(true);
     }//GEN-LAST:event_jButtonAgregarCiudadActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        
         cerrar();
     }//GEN-LAST:event_formWindowClosing
 
     private void jButtonAgregarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoActionPerformed
+        
         JFileChooser fc = new JFileChooser();
         File workingDirectory = new File(System.getProperty("user.dir"));
         fc.setCurrentDirectory(workingDirectory);
@@ -904,8 +909,7 @@ public class AgregarContacto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGeneroActionPerformed
 
 
-
-    private String buscarEstado(String estado){
+    private String buscarEstado(String municipio){
         for (Municipio municipio1 : municipios) {
             if(municipio.equals(municipio1.getNombre())){
                 return municipio1.getNombreEstado();//id del municipio en la bd

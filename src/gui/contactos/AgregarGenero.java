@@ -3,6 +3,7 @@ package gui.contactos;
 
 
 import java.awt.Color;
+import utilerias.Colores;
 import javax.swing.JOptionPane;
 import utilerias.LongitudesAtributosBD;
 import utilerias.OperacionesBaseDatos;

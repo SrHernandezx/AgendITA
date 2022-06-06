@@ -112,8 +112,8 @@ public class AgregarTelefonoContacto extends javax.swing.JDialog {
     private void jTextFieldTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoKeyTyped
         char c = evt.getKeyChar();
         String texto = jTextFieldTelefono.getText();
-        if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NUMERO_TELEFONICO
-            || !(c >= '0' && c <= '9')){
+        if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NUMERO_TELEFONICO || !(c >= '0' && c <= '9')){
+            
             evt.consume();
         } 
     }//GEN-LAST:event_jTextFieldTelefonoKeyTyped

@@ -2,6 +2,7 @@ package gui.contactos;
 
 
 public class Genero {
+    
    private int id;
     private String genero;
     

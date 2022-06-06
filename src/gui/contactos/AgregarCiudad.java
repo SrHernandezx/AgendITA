@@ -18,6 +18,7 @@ public class AgregarCiudad extends javax.swing.JDialog {
         super (parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        OperacionesBaseDatos.levantarServidorXampp();
         this.setResizable(false);
         cargarDatosIniciales();
     }
@@ -36,8 +37,8 @@ public class AgregarCiudad extends javax.swing.JDialog {
             Object [][] datos = OperacionesBaseDatos.buscarMunicipios();
             this.municipios = new Municipio [datos.length];
             for (int i = 0; i < municipios.length; i++) {
-                municipios[i] = new Municipios();
-                municipios[i].setId(Integer.parseInt(String.valueOf(datos [i][0])));
+                municipios[i] = new Municipio();
+                municipios[i].setId(Integer.parseInt(String.valueOf(datos[i][0])));
                 municipios[i].setNombre(String.valueOf(String.valueOf(datos[i][1])));
                 municipios[i].setIdEstado(Integer.parseInt(String.valueOf(datos[i][2])));
                 municipios[i].setNombreEstado(String.valueOf(datos[i][3]));
@@ -92,16 +93,12 @@ public class AgregarCiudad extends javax.swing.JDialog {
         jButtonCancelar = new javax.swing.JButton();
         jComboBoxEstado = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Ciudad");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Estado");
 
         jTextFieldCiudad.setBackground(new java.awt.Color(255, 255, 204));
@@ -157,8 +154,8 @@ public class AgregarCiudad extends javax.swing.JDialog {
                             .addComponent(jLabel2))
                         .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldCiudad, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                            .addComponent(jComboBoxEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jTextFieldCiudad)
+                            .addComponent(jComboBoxEstado, 0, 142, Short.MAX_VALUE))
                         .addGap(41, 41, 41)
                         .addComponent(jButtonAgregarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -166,7 +163,7 @@ public class AgregarCiudad extends javax.swing.JDialog {
                         .addComponent(jButtonAceptar)
                         .addGap(44, 44, 44)
                         .addComponent(jButtonCancelar)))
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,7 +177,7 @@ public class AgregarCiudad extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jButtonAgregarEstado)
+                    .addComponent(jButtonAgregarEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBoxEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -193,15 +190,11 @@ public class AgregarCiudad extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -217,19 +210,20 @@ public class AgregarCiudad extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonAgregarEstadoActionPerformed
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-       String municipio = jTextFieldCiudad.getText();
-       if(municipio.equals("")){
-           JOptionPane.showMessageDialog(null, "El campo ciudad no debe estar vacio","AgendITA: Agregar ciudad", JOptionPane.ERROR_MESSAGE);
-           jTextFieldCiudad.requestFocus();
-       }else{
-           int idEstado = buscarIdEstado(String.valueOf(jComboBoxEstado.getSelectedItem()));
-           if(OperacionesBaseDatos.isMunicipioRegistrado(municipio, idEstado)){
+ 
+        String municipio = jTextFieldCiudad.getText();
+        if(municipio.equals("")){
+            JOptionPane.showMessageDialog(null, "El campo ciudad no debe estar vacio","AgendITA: Agregar ciudad", JOptionPane.ERROR_MESSAGE);
+            jTextFieldCiudad.requestFocus();
+        }else{
+            int idEstado = buscarIdEstado(String.valueOf(jComboBoxEstado.getSelectedItem()));
+            if(OperacionesBaseDatos.isMunicipioRegistrado(municipio, idEstado)){
                JOptionPane.showMessageDialog(null, "El municipio de " + municipio + " en el estado de " + buscarEstado(idEstado) + "ya esta registrado en la Base de Datos", "AgendITA: Agregar estado", JOptionPane.ERROR_MESSAGE);
                jTextFieldCiudad.setText("");
                jTextFieldCiudad.requestFocus();
            } else{
-               int respuesta = OperacionesBaseDatos.insertarMunicipios(municipio,estado);
-               if(respuesta == 1){
+                int respuesta = OperacionesBaseDatos.insertarMunicipio(municipio, idEstado);
+                if(respuesta == 1){
                  JOptionPane.showMessageDialog(null, "Registro insertado exitosamente", "AgendITA: Agregar estado", JOptionPane.INFORMATION_MESSAGE);
                  jTextFieldCiudad.setText("");
                  
