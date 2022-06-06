@@ -5,6 +5,7 @@ import gui.principal.MenuPrincipal;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -328,7 +329,7 @@ public class GestionContactos extends javax.swing.JFrame {
             evt.consume();
                 
             }else {
-                    if (c != KeyEvent.VK_BACKSPACE) {
+                    if (c != KeyEvent.VK_BACK_SPACE) {
                     texto = colocaCaracter(texto, posCursor, c);
                      }else{
                     texto = jTextFieldBuscar.getText();

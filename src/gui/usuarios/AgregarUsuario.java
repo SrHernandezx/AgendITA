@@ -2,6 +2,7 @@ package gui.usuarios;
 
 import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import utilerias.Colores;
 import utilerias.LongitudesAtributosBD;
 import utilerias.OperacionesBaseDatos;
@@ -238,7 +239,7 @@ public class AgregarUsuario extends javax.swing.JDialog {
             evt.consume();
                 
             }else{
-                    if (c != KeyEvent.VK_BACKSPACE) {
+                    if (c != KeyEvent.VK_BACK_SPACE) {
                     texto= colocarCaracter(texto, posCursor, c);
 } else {
                     texto = jTextFieldNombre.getText();
@@ -291,7 +292,7 @@ public class AgregarUsuario extends javax.swing.JDialog {
         OperacionesBaseDatos.insertarUsuario(nombre, contra);
         borrarFormulario();
         this.setVisible(false);
-        GestionUsuarios gestionUsuarios = GestionUsuario.getInstancia();
+        GestionUsuarios gestionUsuarios = GestionUsuarios.getInstancia();
         gestionUsuarios.setVisible(true);
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 

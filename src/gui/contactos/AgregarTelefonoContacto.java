@@ -2,6 +2,7 @@
 package gui.contactos;
 
 import javax.swing.JOptionPane;
+import utilerias.LongitudesAtributosBD;
 
 
 public class AgregarTelefonoContacto extends javax.swing.JDialog {
