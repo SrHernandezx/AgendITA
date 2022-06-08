@@ -18,6 +18,7 @@ public class Splash extends javax.swing.JFrame {
         this.setResizable(false);
         ImageIcon icono = new ImageIcon("src//img//Splash_AgendITA.gif");
         jLabelSplash.setIcon(icono);
+        jLabelSplash.setHorizontalAlignment(jLabelSplash.CENTER);
     }
 
    
@@ -39,11 +40,11 @@ public class Splash extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jLabelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+            .addComponent(jLabelSplash, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
         );
 
         pack();

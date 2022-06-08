@@ -221,7 +221,7 @@ public class AgregarContacto extends javax.swing.JFrame {
         jComboBoxMunicipio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxMunicipio.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Municipio(Estado)"));
 
-        jButtonAgregarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/anadir-lugar_64.png"))); // NOI18N
+        jButtonAgregarCiudad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/anadir-lugar_64.png"))); // NOI18N
         jButtonAgregarCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAgregarCiudadActionPerformed(evt);
@@ -241,11 +241,11 @@ public class AgregarContacto extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jComboBoxMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(55, 55, 55)
-                        .addComponent(jButtonAgregarCiudad)))
+                        .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(jButtonAgregarCiudad))
+                    .addComponent(jComboBoxMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -255,15 +255,14 @@ public class AgregarContacto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jComboBoxMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11))
+                        .addGap(29, 29, 29)
+                        .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldColonia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonAgregarCiudad)))
-                .addGap(18, 18, 18)
-                .addComponent(jTextFieldCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAgregarCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
@@ -295,7 +294,7 @@ public class AgregarContacto extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(jListTelefonos);
 
-        jButtonGenero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar_genero_32.png"))); // NOI18N
+        jButtonGenero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar_genero_32.png"))); // NOI18N
         jButtonGenero.setMaximumSize(new java.awt.Dimension(32, 32));
         jButtonGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,7 +302,7 @@ public class AgregarContacto extends javax.swing.JFrame {
             }
         });
 
-        jButtonAgregarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar_foto_2_32.png"))); // NOI18N
+        jButtonAgregarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar_foto_2_32.png"))); // NOI18N
         jButtonAgregarFoto.setPreferredSize(new java.awt.Dimension(32, 32));
         jButtonAgregarFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,7 +310,7 @@ public class AgregarContacto extends javax.swing.JFrame {
             }
         });
 
-        jButtonTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar_telefono_32.png"))); // NOI18N
+        jButtonTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar_telefono_32.png"))); // NOI18N
         jButtonTelefono.setPreferredSize(new java.awt.Dimension(32, 32));
         jButtonTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,7 +318,7 @@ public class AgregarContacto extends javax.swing.JFrame {
             }
         });
 
-        jButtonCorreoElectronico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/agregar_correo_32.png"))); // NOI18N
+        jButtonCorreoElectronico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/agregar_correo_32.png"))); // NOI18N
         jButtonCorreoElectronico.setPreferredSize(new java.awt.Dimension(32, 32));
         jButtonCorreoElectronico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -388,9 +387,10 @@ public class AgregarContacto extends javax.swing.JFrame {
                             .addComponent(jScrollPane4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jButtonCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addComponent(jButtonTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/aceptar_16.png"))); // NOI18N

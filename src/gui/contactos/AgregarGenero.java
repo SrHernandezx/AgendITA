@@ -133,7 +133,7 @@ public class AgregarGenero extends javax.swing.JDialog {
     private void jTextFieldGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldGeneroKeyTyped
         char c = evt.getKeyChar();
         String texto = jTextFieldGenero.getText();
-        if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NOMBRE_ESTADO){
+        if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_GENERO){
         evt.consume();
         } 
     }//GEN-LAST:event_jTextFieldGeneroKeyTyped

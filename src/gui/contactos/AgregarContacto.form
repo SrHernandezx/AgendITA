@@ -219,12 +219,12 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextFieldCalle" min="-2" pref="171" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="jComboBoxMunicipio" min="-2" pref="175" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="jTextFieldCalle" min="-2" pref="171" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                               <Component id="jButtonAgregarCiudad" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jComboBoxMunicipio" min="-2" pref="175" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -237,7 +237,8 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jComboBoxMunicipio" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                              <Component id="jTextFieldCalle" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -245,11 +246,9 @@
                                   <Component id="jTextFieldColonia" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonAgregarCiudad" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonAgregarCiudad" min="-2" pref="64" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jTextFieldCalle" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -337,7 +336,7 @@
             <Component class="javax.swing.JButton" name="jButtonAgregarCiudad">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/iconos/anadir-lugar_64.png"/>
+                  <Image iconType="3" name="/img/anadir-lugar_64.png"/>
                 </Property>
               </Properties>
               <Events>
@@ -444,10 +443,12 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonTelefono" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonCorreoElectronico" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="jButtonCorreoElectronico" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="jButtonTelefono" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -559,7 +560,7 @@
             <Component class="javax.swing.JButton" name="jButtonGenero">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/iconos/agregar_genero_32.png"/>
+                  <Image iconType="3" name="/img/agregar_genero_32.png"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[32, 32]"/>
@@ -572,7 +573,7 @@
             <Component class="javax.swing.JButton" name="jButtonAgregarFoto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/iconos/agregar_foto_2_32.png"/>
+                  <Image iconType="3" name="/img/agregar_foto_2_32.png"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[32, 32]"/>
@@ -585,7 +586,7 @@
             <Component class="javax.swing.JButton" name="jButtonTelefono">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/iconos/agregar_telefono_32.png"/>
+                  <Image iconType="3" name="/img/agregar_telefono_32.png"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[32, 32]"/>
@@ -598,7 +599,7 @@
             <Component class="javax.swing.JButton" name="jButtonCorreoElectronico">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/iconos/agregar_correo_32.png"/>
+                  <Image iconType="3" name="/img/agregar_correo_32.png"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[32, 32]"/>
