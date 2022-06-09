@@ -21,11 +21,11 @@ import utilerias.OperacionesBaseDatos;
 public class Login extends javax.swing.JFrame {
 
     private static int intentos;
-    private static Login instancia =  null;
-    
+    private static Login instancia = null;
+
     public Login() {
         initComponents();
-        cambiarFuente();
+        //cambiarFuente();
         this.setTitle("Agendita: Loging");
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -33,88 +33,87 @@ public class Login extends javax.swing.JFrame {
         jPanelPrincipal.setBackground(Colores.COLOR_FONDO_LOGIN);
         OperacionesBaseDatos.levantarServidorXampp();
         intentos = 0;
-        
+
     }
-public static Login getInstancia(){
+
+    public static Login getInstancia() {
         synchronized (Login.class) {
             if (instancia == null) {
                 instancia = new Login();
             }
-            }
+        }
         return instancia;
     }
 
+    private void cambiarFuente() {
+        InputStream myStream = null;
+        try {
+            myStream = new BufferedInputStream(
+                    new FileInputStream("src//fuentes//Lato-Bold.ttf"));
+            Font fuente = Font.createFont(Font.TRUETYPE_FONT, myStream);
+            fuente = fuente.deriveFont(Font.BOLD, 22);
 
-
-private void cambiarFuente(){
-    InputStream myStream=null;
-    try{
-        myStream = new BufferedInputStream(
-        new FileInputStream("src//fuentes//Lato-Bold.ttf"));
-        Font fuente = Font.createFont(Font.TRUETYPE_FONT, myStream);
-        fuente = fuente.deriveFont(Font.BOLD, 22);
-        
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(fuente);
-        jLabel2.setFont(fuente);
-        jLabel3.setFont(fuente);
-        jTextFieldUsuario.setFont(fuente);
-        //jPasswordFieldPasseord.setFont(fuente);
-        jButtonAceptar.setFont(fuente);
-        jButtonCancelar.setFont(fuente);
-    }catch (FileNotFoundException ex){
-        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-    }catch (FontFormatException ex){
-        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        
-    }catch (IOException ex){
-        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-    }finally{
-        try{
-            myStream.close();
-        }catch (IOException ex){
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(fuente);
+            jLabel2.setFont(fuente);
+            jLabel3.setFont(fuente);
+            jTextFieldUsuario.setFont(fuente);
+            //jPasswordFieldPasseord.setFont(fuente);
+            jButtonAceptar.setFont(fuente);
+            jButtonCancelar.setFont(fuente);
+        } catch (FileNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FontFormatException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                myStream.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
-}
-private void cerrar(){
-    Object[] opciones = {"Aceptar", "Cancelar"};
-    int eleccion = JOptionPane.showOptionDialog(null,"¿Salir del sistema?",
-            "Agenda: Salir", JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
-    if (eleccion == JOptionPane.YES_OPTION) {
-        OperacionesBaseDatos.detenerServidorXampp();
-        System.exit(0);
-        
+
+    private void cerrar() {
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(null, "¿Salir del sistema?",
+                "Agenda: Salir", JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, opciones, "Cancelar");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            OperacionesBaseDatos.detenerServidorXampp();
+            System.exit(0);
+
+        }
     }
-}
-private void borrarFormulario(){
-    jTextFieldUsuario.setText("");
-    jPasswordFieldPassword.setText("");
-    jTextFieldUsuario.requestFocus();
-    
-}
+
+    private void borrarFormulario() {
+        jTextFieldUsuario.setText("");
+        jPasswordFieldPassword.setText("");
+        jTextFieldUsuario.requestFocus();
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jTextFieldUsuario = new javax.swing.JTextField();
+        jButtonAceptar = new javax.swing.JButton();
+        jButtonCancelar = new javax.swing.JButton();
+        jPasswordFieldPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(210, 255, 250));
+        jPanelPrincipal.setBackground(new java.awt.Color(210, 255, 250));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login_256.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(256, 256));
-        jLabel1.setPreferredSize(new java.awt.Dimension(256, 256));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Usuario");
@@ -122,58 +121,59 @@ private void borrarFormulario(){
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Password");
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/entrar_16.png"))); // NOI18N
-        jButton1.setText("Aceptar");
+        jButtonAceptar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/entrar_16.png"))); // NOI18N
+        jButtonAceptar.setText("Aceptar");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/cancelar_16.png"))); // NOI18N
-        jButton2.setText("Cancelar");
+        jButtonCancelar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButtonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cancelar_16.png"))); // NOI18N
+        jButtonCancelar.setText("Cancelar");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPasswordFieldPassword.setText("jPasswordField1");
+
+        javax.swing.GroupLayout jPanelPrincipalLayout = new javax.swing.GroupLayout(jPanelPrincipal);
+        jPanelPrincipal.setLayout(jPanelPrincipalLayout);
+        jPanelPrincipalLayout.setHorizontalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel1)
+                .addGap(137, 137, 137)
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
                         .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addComponent(jButton1)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton2)))
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(jPasswordFieldPassword)))
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                        .addComponent(jButtonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButtonCancelar)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelPrincipalLayout.setVerticalGroup(
+            jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrincipalLayout.createSequentialGroup()
+                .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1))
+                    .addGroup(jPanelPrincipalLayout.createSequentialGroup()
                         .addGap(146, 146, 146)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(45, 45, 45)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2))))
+                        .addGroup(jPanelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButtonAceptar)
+                            .addComponent(jButtonCancelar))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
 
@@ -181,11 +181,11 @@ private void borrarFormulario(){
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -226,7 +226,7 @@ private void borrarFormulario(){
     private void jPasswordFieldPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordKeyTyped
         // TODO add your handling code here:
         char car = evt.getKeyChar();
-        if (car == KeyEvent.VK_ENTER){
+        if (car == KeyEvent.VK_ENTER) {
             ingresar();
         }
     }//GEN-LAST:event_jPasswordFieldPasswordKeyTyped
@@ -236,10 +236,10 @@ private void borrarFormulario(){
         cerrar();
     }//GEN-LAST:event_formWindowClosing
 
-    private void ingresar(){
+    private void ingresar() {
         String usuario = jTextFieldUsuario.getText();
         String contra = String.valueOf(jPasswordFieldPassword.getPassword());
-       String info[] = OperacionesBaseDatos.buscarUsuario(usuario);
+        String info[] = OperacionesBaseDatos.buscarUsuario(usuario);
         if (info[0].endsWith(usuario)) {
             if (info[1].equals(contra)) {
                 JOptionPane.showMessageDialog(null, "Bienvenido" + usuario,
@@ -247,49 +247,45 @@ private void borrarFormulario(){
                 this.dispose();
                 MenuPrincipal menu = MenuPrincipal.getInstancia();
                 menu.setVisible(true);
-                
-            }else{
+
+            } else {
                 intentos++;
                 if (intentos == 3) {
                     JOptionPane.showMessageDialog(null, "Numero Maximo de intentos excedido",
-                    "Agenda: Login", JOptionPane.INFORMATION_MESSAGE);
+                            "Agenda: Login", JOptionPane.INFORMATION_MESSAGE);
                     System.exit(0);
-                    
+
                 }
                 JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecta",
-                    "Agenda: Login", JOptionPane.ERROR_MESSAGE);
-                    borrarFormulario();
+                        "Agenda: Login", JOptionPane.ERROR_MESSAGE);
+                borrarFormulario();
             }
-            
-        }else{
-            intentos++;
-            if (intentos ==3) {
-                JOptionPane.showMessageDialog(null, "Numero Maximo de intentos excedido",
-                    "Agenda: Login", JOptionPane.INFORMATION_MESSAGE);
-                    System.exit(0);
-                
-            }
-            JOptionPane.showMessageDialog(null, "Usuario No encontrado",
-                    "Agenda: Login", JOptionPane.ERROR_MESSAGE);
-                    borrarFormulario();
-            
-        }
-        
-}        else {
-    
+
+        } else {
             intentos++;
             if (intentos == 3) {
                 JOptionPane.showMessageDialog(null, "Numero Maximo de intentos excedido",
-                    "Agenda: Login", JOptionPane.INFORMATION_MESSAGE);
-                    System.exit(0);
-                
-            }
-            JOptionPane.showMessageDialog(null, "Usuario nNo encontrado",
-                   "Agenda: Login", JOptionPane.ERROR_MESSAGE );
-            borrarFormulario();
+                        "Agenda: Login", JOptionPane.INFORMATION_MESSAGE);
+                System.exit(0);
 
-}
-}       
+            } else {
+
+                intentos++;
+                if (intentos == 3) {
+                    JOptionPane.showMessageDialog(null, "Numero Maximo de intentos excedido",
+                            "Agenda: Login", JOptionPane.INFORMATION_MESSAGE);
+                    System.exit(0);
+
+                }
+                JOptionPane.showMessageDialog(null, "Usuario nNo encontrado",
+                        "Agenda: Login", JOptionPane.ERROR_MESSAGE);
+                borrarFormulario();
+
+            }
+
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -306,7 +302,7 @@ private void borrarFormulario(){
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-                
+
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -318,7 +314,7 @@ private void borrarFormulario(){
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -329,13 +325,13 @@ private void borrarFormulario(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonAceptar;
+    private javax.swing.JButton jButtonCancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel jPanelPrincipal;
+    private javax.swing.JPasswordField jPasswordFieldPassword;
+    private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }

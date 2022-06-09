@@ -125,7 +125,6 @@ public class GestionUsuarios extends javax.swing.JFrame {
         jPanelUsuarios.setBackground(new java.awt.Color(120, 200, 255));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Buscar");
 
         jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
@@ -182,11 +181,6 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/buscar_todos_24.png"))); // NOI18N
         jButton4.setMaximumSize(new java.awt.Dimension(24, 24));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
 
         jTextFieldBuscar.setBackground(new java.awt.Color(255, 255, 204));
         jTextFieldBuscar.addFocusListener(new java.awt.event.FocusAdapter() {

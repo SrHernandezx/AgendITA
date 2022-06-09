@@ -48,8 +48,6 @@ public class ModificarUsuario extends javax.swing.JDialog {
         jLabelUsuarioDuplicado = new javax.swing.JLabel();
         jLabelNotas = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(187, 225, 225));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
@@ -312,8 +310,8 @@ public class ModificarUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabelNotas;
     private javax.swing.JLabel jLabelUsuarioDuplicado;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordFieldPassword;
-    private javax.swing.JTextField jTextFieldNombre;
+    public static javax.swing.JPasswordField jPasswordFieldPassword;
+    public static javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
                 

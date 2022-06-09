@@ -1,8 +1,8 @@
 package gui.usuarios;
 
-import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+
 import utilerias.Colores;
 import utilerias.LongitudesAtributosBD;
 import utilerias.OperacionesBaseDatos;
@@ -49,8 +49,9 @@ public class AgregarUsuario extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jButtonAceptar = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
-        jTextFieldNombre = new javax.swing.JTextField();
         jPasswordFieldPassword = new javax.swing.JPasswordField();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jLabelUsuarioDuplicado = new javax.swing.JLabel();
         jLabelNotas = new javax.swing.JLabel();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -63,11 +64,9 @@ public class AgregarUsuario extends javax.swing.JDialog {
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Nombre");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Contraseña");
 
         jButtonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/aceptar_16.png"))); // NOI18N
@@ -83,6 +82,21 @@ public class AgregarUsuario extends javax.swing.JDialog {
         jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCancelarActionPerformed(evt);
+            }
+        });
+
+        jPasswordFieldPassword.setText("jPasswordField1");
+        jPasswordFieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jPasswordFieldPasswordFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordFieldPasswordFocusLost(evt);
+            }
+        });
+        jPasswordFieldPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jPasswordFieldPasswordKeyTyped(evt);
             }
         });
 
@@ -105,21 +119,6 @@ public class AgregarUsuario extends javax.swing.JDialog {
             }
         });
 
-        jPasswordFieldPassword.setText("jPasswordField1");
-        jPasswordFieldPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordFieldPasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jPasswordFieldPasswordFocusLost(evt);
-            }
-        });
-        jPasswordFieldPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jPasswordFieldPasswordKeyTyped(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -131,16 +130,23 @@ public class AgregarUsuario extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldNombre)
-                            .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(jPasswordFieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldNombre))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(198, 198, 198)
                         .addComponent(jButtonAceptar)
                         .addGap(44, 44, 44)
                         .addComponent(jButtonCancelar)))
                 .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jLabelUsuarioDuplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,7 +163,9 @@ public class AgregarUsuario extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAceptar)
                     .addComponent(jButtonCancelar))
-                .addGap(155, 155, 155))
+                .addGap(59, 59, 59)
+                .addComponent(jLabelUsuarioDuplicado, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57))
         );
 
         jLabelNotas.setText("El nombre y la contraseña pueden tener un maximo de 15 caracteres");
@@ -184,17 +192,6 @@ public class AgregarUsuario extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusGained
-        // TODO add your handling code here:
-        jTextFieldNombre.setBackground(Colores.COLOR_FOCO);
-        jTextFieldNombre.selectAll();
-    }//GEN-LAST:event_jTextFieldNombreFocusGained
-
-    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
-        // TODO add your handling code here:
-        jTextFieldNombre.setBackground(Color.WHITE);
-    }//GEN-LAST:event_jTextFieldNombreFocusLost
-
     private void jPasswordFieldPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordFocusGained
         // TODO add your handling code here:
         jPasswordFieldPassword.setBackground(Colores.COLOR_FOCO);
@@ -205,40 +202,6 @@ public class AgregarUsuario extends javax.swing.JDialog {
         // TODO add your handling code here:
         jPasswordFieldPassword.setBackground(Color.WHITE);
     }//GEN-LAST:event_jPasswordFieldPasswordFocusLost
-
-    private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
-        // TODO add your handling code here:
-        char c = evt. getKeyChar();
-        int posCursor = jTextFieldNombre.getCaretPosition();
-        String texto = jTextFieldNombre.getText();
-        if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NOMBRE_USUARIO) {
-            evt.consume();
-        }else{
-            if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < 'O' || c > '9') && (c != 'ñ') && (c != 'Ñ') && (c != 'á') && (c != 'é') && (c != 'í') && ( c!= 'ó') && (c != 'ú') && (c != 'Á') && (c != 'É') && (c != 'Í') && ( c!= 'Ó') && (c != 'Ú')) {
-            evt.consume();
-                
-            }else{
-                    if (c != KeyEvent.VK_BACK_SPACE) {
-                    texto= colocarCaracter(texto, posCursor, c);
-} else {
-                    texto = jTextFieldNombre.getText();
-                    }
-                    }
-            String usuarios[] = OperacionesBaseDatos.buscarUsuario(texto);
-            if (usuarios != null) {
-                String mensaje = "<html><font color = \"red\"><b>Usuario ya registrado en la Base de Datos<*b></font></html>";
-                jLabelUsuarioDuplicado.setText(mensaje);
-                jPasswordFieldPassword.setEnabled(false);
-                
-            }
-            else{
-                jLabelUsuarioDuplicado.setText("");
-                jButtonAceptar.setEnabled(true);
-                jPasswordFieldPassword.setEnabled(true);
-                
-            }
-        }
-    }//GEN-LAST:event_jTextFieldNombreKeyTyped
 
     private void jPasswordFieldPasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldPasswordKeyTyped
         // TODO add your handling code here:
@@ -286,6 +249,52 @@ public class AgregarUsuario extends javax.swing.JDialog {
         GestionUsuarios usuarios = GestionUsuarios.getInstancia();
         usuarios.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
+
+    private void jTextFieldNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusGained
+        jTextFieldNombre.setBackground(Colores.COLOR_FOCO);
+        jTextFieldNombre.selectAll();
+    }//GEN-LAST:event_jTextFieldNombreFocusGained
+
+    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
+         jTextFieldNombre.setBackground(Color.WHITE);
+    }//GEN-LAST:event_jTextFieldNombreFocusLost
+
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+
+    private void jTextFieldNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreKeyTyped
+         char c = evt. getKeyChar();
+        int posCursor = jTextFieldNombre.getCaretPosition();
+        String texto = jTextFieldNombre.getText();
+        if (texto.length() + 1 > LongitudesAtributosBD.LONGITUD_NOMBRE_USUARIO) {
+            evt.consume();
+        }else{
+            if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < 'O' || c > '9') && (c != 'ñ') && (c != 'Ñ') && (c != 'á') && (c != 'é') && (c != 'í') && ( c!= 'ó') && (c != 'ú') && (c != 'Á') && (c != 'É') && (c != 'Í') && ( c!= 'Ó') && (c != 'Ú')) {
+            evt.consume();
+                
+            }else{
+                    if (c != KeyEvent.VK_BACK_SPACE) {
+                    texto= colocarCaracter(texto, posCursor, c);
+} else {
+                    texto = jTextFieldNombre.getText();
+                    }
+                    }
+            String usuarios[] = OperacionesBaseDatos.buscarUsuario(texto);
+            if (usuarios != null) {
+                String mensaje = "<html><font color = \"red\"><b>Usuario ya registrado en la Base de Datos<*b></font></html>";
+                jLabelUsuarioDuplicado.setText(mensaje);
+                jPasswordFieldPassword.setEnabled(false);
+                
+            }
+            else{
+                jLabelUsuarioDuplicado.setText("");
+                jButtonAceptar.setEnabled(true);
+                jPasswordFieldPassword.setEnabled(true);
+                
+            }
+        }
+    }//GEN-LAST:event_jTextFieldNombreKeyTyped
                    private String colocarCaracter(String texto, int posCursor, char c){
                        String texto1 = texto.substring(0, posCursor) + c;
                        String texto2 ="";
@@ -347,6 +356,7 @@ public class AgregarUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelNotas;
+    private javax.swing.JLabel jLabelUsuarioDuplicado;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldPassword;
     private javax.swing.JTextField jTextFieldNombre;
